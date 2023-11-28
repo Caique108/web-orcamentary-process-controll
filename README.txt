@@ -1,3 +1,3 @@
 Olá, este é o meu primeiro projeto.
 
-Irei tentar fazer um "site" de controle de processos, ultilizando bootstrap, ajax, jquery e php.
+Irei tentar fazer um "App" de controle de processos, ultilizando phyton e sqlite3.
