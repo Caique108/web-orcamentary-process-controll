@@ -1,0 +1,42 @@
+{% extends 'paginas/modelo.html' %}
+
+<!-- carregando os modelos estáticos -->
+{% load static %}
+
+
+{% load crispy_forms_tags %}
+
+
+
+<!-- página criada automaticamente apartir da .view (do proprio django), carregando um modelo pré definido -->
+
+{% block conteudo %}
+<div class='container'> 
+    <hr>
+    <h3>Excluir Registros</h3>
+    <hr>
+    <p class="lead">
+        Confirme para excluir o registro definitivamente
+    </p>
+
+    
+
+    <form action="" method="post">
+        
+        <p>
+            Deseja excluir o registro : <strong>{{ object }}</strong>?
+        </p>
+        {% csrf_token %}
+
+        {{ form|crispy }}
+        
+        <a href="javascript:history.back()" class="btn btn-primary" title="Cancelar" aria-hidden="true">Cancelar</a>
+        <button type="submit" class="btn btn-danger" title="Excluir">Excluir</button>
+        
+
+
+    </form>
+
+</div>
+
+{% endblock %}
