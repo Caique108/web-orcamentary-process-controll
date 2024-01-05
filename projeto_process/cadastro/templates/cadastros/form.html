@@ -1,0 +1,44 @@
+{% extends 'paginas/modelo.html' %}
+
+
+
+{% load static %}
+
+
+
+{% load crispy_forms_tags %}
+
+
+
+
+
+{% block conteudo %}
+<div class='container'> 
+    <hr>
+    <h3>Cadastrar Registros</h3>
+    <hr>
+    <p class="lead">
+        Preencha todos os campos obrigatórios:
+    </p>
+    
+
+
+    <!-- Form de confirmação de exclusão -->
+
+    <form action="" method="post">
+        <!-- chamada do django para verificação segura -->
+        
+        {% csrf_token %}
+
+        <!-- chamada do django que transforma o form em paragrafo -->
+        {{ form|crispy }}
+
+        <br><button type="submit" class="btn btn-primary mg-2 p-2">Cadastrar</button>
+
+
+
+    </form>
+</div>
+
+
+{% endblock %}
