@@ -11,10 +11,7 @@ urlpatterns = [
     path('modelo/', modelo, name='modelo'),
     path('', home, name='home'),
     path('cadastros/', cadastro, name='cadastro')
-<<<<<<< HEAD
     
-=======
->>>>>>> a7dfd785e40b8a9274d080c046c527b37a7cb2a1
 
     
     
