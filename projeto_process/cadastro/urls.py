@@ -12,7 +12,7 @@ urlpatterns = [
     path('cadastrar/processo/', ProcessosICreate.as_view(), name='cadastrar-indica'),
     path('cadastrar/fonte/', FonteICreate.as_view(), name='cadastrar-fonte'),
     path('cadastrar/paoe/', PaoeICreate.as_view(), name='cadastrar-paoe'),
-
+    
 
 
     #int(inteiro), pk(primarykey) - chamadas do proprio django
