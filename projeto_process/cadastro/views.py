@@ -61,7 +61,7 @@ class PaoeICreate(CreateView):
     template_name = 'cadastros/form.html'
 
     success_url = reverse_lazy('listar-paoe')
-     
+
 
 
 ######### UPDATE #########
