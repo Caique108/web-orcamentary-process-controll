@@ -9,8 +9,11 @@
 {% load crispy_forms_tags %}
 
 {% block navbar %}
-<nav class="navbar navbar-danger bg-danger bg-gradient">
-
+<nav class="navbar sticky-top navbar-dark bg-dark text-white justify-content-center">
+    <a class="navbar-brand " href="#">
+        
+        <i class="bi bi-activity"></i> DEPARTAMENTO DE PLANEJAMENTO <i class="bi bi-activity"></i></a>
+        
   </nav>
 
 {% endblock %}
@@ -39,7 +42,7 @@
 
             
             <br><a href="{% url 'home' %}" class="btn btn-danger">Cancelar</a>
-            <button type="submit" class="btn btn-primary">Entrar</button>
+            <button type="submit" class="btn btn-primary align-top">Entrar</button>
 
 
 
