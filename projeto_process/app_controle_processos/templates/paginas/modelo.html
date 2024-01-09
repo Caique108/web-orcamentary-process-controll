@@ -39,7 +39,10 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Sobre nós!</a>
                     </li>
-
+                </ul>
+                <ul class="navbar-nav">
+                 <!-- condicionando para trazer a lista apenas se o usuario estiver logado -->
+                    {% if request.user.is_authenticated %}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="{% url 'cadastro' %}" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Cadastros</a>
 
@@ -79,8 +82,7 @@
                 <ul class="navbar-nav ">    
 
 
-                    <!-- condicionando para trazer a lista apenas se o usuario estiver logado -->
-                    {% if request.user.is_authenticated %}
+
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-white" href="{% url 'login' %}" 
                             id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false"
@@ -104,7 +106,7 @@
                     </li>
                     {% else %}
                     
-                    <li class="nav-link mx-auto">
+                    <li class="nav-link">
                         <a class="nav-link text-white" href="{% url 'login' %}">
                             <i class="bi bi-box-arrow-in-right" aria-hidden="true"></i>
                             Login
