@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'app_controle_processos',
     'cadastro.apps.CadastroConfig',
     'usuarios.apps.UsuariosConfig',
+    'planodetrabalho.apps.PlanodetrabalhoConfig',
     'crispy_forms',
     'crispy_bootstrap4'
     
@@ -65,7 +66,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'projeto_process.urls'
+ROOT_URLCONF = 'configuracoes.urls'
 
 TEMPLATES = [
     {
@@ -83,7 +84,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'projeto_process.wsgi.application'
+WSGI_APPLICATION = 'configuracoes.wsgi.application'
 
 
 # Database
