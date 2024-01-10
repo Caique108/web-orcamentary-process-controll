@@ -8,6 +8,7 @@ from .views import ProcessosList, FonteList, PaoeList
 #colocar nessa variavel todos os teamplates que poderão ser chamados pela URL
 urlpatterns = [
     #definindo como chamar cada página na URL
+    
     path('cadastrar/campo/', CampoCreate.as_view(), name='cadastrar-campo'),
     path('cadastrar/processo/', ProcessosICreate.as_view(), name='cadastrar-indica'),
     path('cadastrar/fonte/', FonteICreate.as_view(), name='cadastrar-fonte'),
