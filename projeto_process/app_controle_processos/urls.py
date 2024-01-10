@@ -10,7 +10,7 @@ urlpatterns = [
     path('painel/', painel, name='painel'),
     path('modelo/', modelo, name='modelo'),
     path('', home, name='home'),
-    path('cadastros/', cadastro, name='cadastro')
+    
     
 
     

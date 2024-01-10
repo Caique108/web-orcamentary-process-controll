@@ -37,16 +37,20 @@
                             <a class="nav-link" href="#">Sobre nós!</a>
                         </li>
                     </ul>
+
                     <ul class="navbar-nav">
                     <!-- condicionando para trazer a lista apenas se o usuario estiver logado -->
+
                         {% if request.user.is_authenticated %}
+
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="{% url 'cadastro' %}" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Cadastros</a>
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Cadastros</a>
 
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <li><a class="dropdown-item" href="{% url 'cadastrar-indica' %}">Cadastro de Indicações</a></li>
                                 <li><a class="dropdown-item" href="{% url 'cadastrar-fonte' %}">Cadastro de Fontes</a></li>
                                 <li><a class="dropdown-item" href="{% url 'cadastrar-paoe' %}">Cadastro de PAOEs</a></li>
+                                <li><a class="dropdown-item" href="{% url 'cadastrar-pta' %}">Cadastro de PTA</a></li>
                         
                             </ul>
                         </li>
@@ -63,32 +67,15 @@
                             </ul>
                         </li>
 
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Visão Geral</a>
 
-<<<<<<< HEAD
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a class="dropdown-item" href="#">DashBoard CPG</a></li>
-                                <li><a class="dropdown-item" href="#">DashBoard CEEPA</a></li>
-                                <li><a class="dropdown-item" href="#">Planejamento de compras ano()</a></li>
-                            </ul>
-                        </li>
-                    </ul> 
-=======
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="{% url 'cadastrar-indica' %}">Cadastro de Indicações</a></li>
-                            <li><a class="dropdown-item" href="{% url 'cadastrar-fonte' %}">Cadastro de Fontes</a></li>
-                            <li><a class="dropdown-item" href="{% url 'cadastrar-paoe' %}">Cadastro de PAOEs</a></li>
-                            <li><a class="dropdown-item" href="{% url 'cadastrar-pta' %}">Cadastro de PTA</a></li>
-                       
-                        </ul>
+
+
                     </li>
->>>>>>> 71a2acb3df1210fb859785e0756e8dcadde8deff
 
                     <!-- não consigo colocar essa bosta pra direita de forma alguma só tirando de dentro da box da navbar-->
                     <ul class="navbar-nav ">    
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-white" href="{% url 'login' %}" 
+                            <a class="nav-link dropdown-toggle text-white text-center border rounded border-secondary  mx-auto" href="{% url 'login' %}" 
                                 id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false"
                                 aria-haspopup="true">
                                 <i class="bi bi-person-circle" aria-hidden="true"></i>
@@ -110,7 +97,7 @@
 
                         {% else %}
                         
-                        <li class="nav-link">
+                        <li class="nav-link ">
                             <a class="nav-link text-white" href="{% url 'login' %}">
                                 <i class="bi bi-box-arrow-in-right" aria-hidden="true"></i>
                                 Login
@@ -125,32 +112,17 @@
         </nav>
         {% endblock %}
 
-<<<<<<< HEAD
+
         {% block conteudo %}
-
         {% endblock %}
-
-
     </head>
+
+
 {% block body %}
 <body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
 </body>
-=======
-        </div>
-      </nav>
-    {% endblock %}
-    
- 
-    
-</head>
-
-
-
-{% block conteudo %}
-
->>>>>>> 71a2acb3df1210fb859785e0756e8dcadde8deff
 {% endblock %}
 
 
@@ -167,13 +139,8 @@
             
                 <ul class="nav nav-pills justify-content-center border-bottom pb-3 mb-2 ">
                     
-                    <li class="nav-item">
-                        <a href="{% url 'home' %}" class="nav-link px-2  text-muted">Início</a>
-                    </li>
-                
-                    <li class="nav-item">
-                        <a href="{% url 'cadastro' %}" class="nav-link px-2  text-muted">Cadastros</a>
-                    </li>
+                    <p class="text-center text-muted">
+                    </p>
 
                 </ul>
 
