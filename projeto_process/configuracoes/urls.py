@@ -13,5 +13,6 @@ urlpatterns = [
     #chamando as URLS direto das página urls do app e colocando no urls do django
     path('', include('cadastro.urls')),
     path('', include('usuarios.urls')),
+    path('', include('planodetrabalho.urls')),
     
 ]

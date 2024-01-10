@@ -73,3 +73,4 @@ class Processos(models.Model):
     #Retorna a representação em STRING do objeto
     def __str__(self):
         return "{} - Fonte({}) {} - {} - {}".format(self.bbm, self.fonte2.fonte, self.paoe2, self.campo.nome, self.campo.descricao)
+    

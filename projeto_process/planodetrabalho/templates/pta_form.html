@@ -1,0 +1,22 @@
+{% extends 'cadastros/form.html' %}
+
+
+
+{% load static %}
+
+
+{% load crispy_forms_tags %}
+
+
+
+{% block conteudo %}
+        <div class='container'> 
+                <form action="" method="post"> 
+                        {% csrf_token %}
+
+                        <!-- chamada do django que transforma o form em paragrafo -->
+                        {{ form|crispy }}
+                </form> 
+        </div>
+{% endblock %}
+

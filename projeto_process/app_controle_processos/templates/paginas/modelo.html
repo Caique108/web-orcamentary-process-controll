@@ -66,6 +66,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Visão Geral</a>
 
+<<<<<<< HEAD
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <li><a class="dropdown-item" href="#">DashBoard CPG</a></li>
                                 <li><a class="dropdown-item" href="#">DashBoard CEEPA</a></li>
@@ -73,6 +74,16 @@
                             </ul>
                         </li>
                     </ul> 
+=======
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="{% url 'cadastrar-indica' %}">Cadastro de Indicações</a></li>
+                            <li><a class="dropdown-item" href="{% url 'cadastrar-fonte' %}">Cadastro de Fontes</a></li>
+                            <li><a class="dropdown-item" href="{% url 'cadastrar-paoe' %}">Cadastro de PAOEs</a></li>
+                            <li><a class="dropdown-item" href="{% url 'cadastrar-pta' %}">Cadastro de PTA</a></li>
+                       
+                        </ul>
+                    </li>
+>>>>>>> 71a2acb3df1210fb859785e0756e8dcadde8deff
 
                     <!-- não consigo colocar essa bosta pra direita de forma alguma só tirando de dentro da box da navbar-->
                     <ul class="navbar-nav ">    
@@ -114,6 +125,7 @@
         </nav>
         {% endblock %}
 
+<<<<<<< HEAD
         {% block conteudo %}
 
         {% endblock %}
@@ -125,15 +137,33 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
 </body>
+=======
+        </div>
+      </nav>
+    {% endblock %}
+    
+ 
+    
+</head>
+
+
+
+{% block conteudo %}
+
+>>>>>>> 71a2acb3df1210fb859785e0756e8dcadde8deff
 {% endblock %}
+
+
+
+
 
 {% block footer %}
 
     
 
-    <div class="container ">
+    <div class="container py-4 py-md-5 px-4 px-md-3 ">
 
-        <footer class="py-3 my-4 p-2">
+        <footer class="py-3 my-4 p-2 ">
             
                 <ul class="nav nav-pills justify-content-center border-bottom pb-3 mb-2 ">
                     
