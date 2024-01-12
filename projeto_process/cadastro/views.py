@@ -4,10 +4,19 @@ from django.views.generic.list import ListView
 #importando modelos da pasta cadastros
 from .models import Campo,Processos,Fonte,Paoe
 
+#chamada para para onde ir após a comfirmação na página
 from django.urls import reverse_lazy
+
+#trava as páginas para serem acessadas apenas com autenticação
+from django.contrib.auth.mixins import LoginRequiredMixin
+
+
+
+
 # Criando as views que apareceram no site, baseadas nas models de cadastro usando o mesmo template
 
-class CampoCreate(CreateView):
+class CampoCreate(LoginRequiredMixin, CreateView):
+    login_url = reverse_lazy('login')
     #model q queremos criar a view
     model = Campo
     #campos do modelo que queremos usar
@@ -18,7 +27,9 @@ class CampoCreate(CreateView):
     success_url = reverse_lazy('index')
 
 
-class ProcessosICreate(CreateView):
+
+class ProcessosICreate(LoginRequiredMixin, CreateView):
+    login_url = reverse_lazy('login')
     model = Processos
 
     fields = [
@@ -39,7 +50,8 @@ class ProcessosICreate(CreateView):
 
     success_url = reverse_lazy('listar-processos')
 
-class FonteICreate(CreateView):
+class FonteICreate(LoginRequiredMixin, CreateView):
+    login_url = reverse_lazy('login')
     model = Fonte
 
     fields = [
@@ -51,7 +63,8 @@ class FonteICreate(CreateView):
     success_url = reverse_lazy('listar-fontes')
 
 
-class PaoeICreate(CreateView):
+class PaoeICreate(LoginRequiredMixin, CreateView):
+    login_url = reverse_lazy('login')
     model = Paoe
 
     fields = [
@@ -66,7 +79,9 @@ class PaoeICreate(CreateView):
 
 ######### UPDATE #########
 
-class ProcessosIUpdate(UpdateView):
+class ProcessosIUpdate(LoginRequiredMixin, UpdateView):
+
+    login_url = reverse_lazy('login')
     model = Processos
 
     fields = [
@@ -88,7 +103,9 @@ class ProcessosIUpdate(UpdateView):
     success_url = reverse_lazy('listar-processos')
 
 
-class FonteIUpdate(UpdateView):
+class FonteIUpdate(LoginRequiredMixin, UpdateView):
+
+    login_url = reverse_lazy('login')
     model = Fonte
 
     fields = [
@@ -102,7 +119,8 @@ class FonteIUpdate(UpdateView):
 
 
 
-class PaoeIUpdate(UpdateView):
+class PaoeIUpdate(LoginRequiredMixin, UpdateView):
+    login_url = reverse_lazy('login')
     model = Paoe
 
     fields = [
@@ -120,7 +138,9 @@ class PaoeIUpdate(UpdateView):
 
 
 
-class ProcessosIDelete(DeleteView):
+class ProcessosIDelete(LoginRequiredMixin, DeleteView):
+
+    login_url = reverse_lazy('login')
     model = Processos
 
     template_name = 'cadastros/form-excluir.html'
@@ -129,7 +149,9 @@ class ProcessosIDelete(DeleteView):
 
 
 
-class FonteIDelete(DeleteView):
+class FonteIDelete(LoginRequiredMixin, DeleteView):
+
+    login_url = reverse_lazy('login')
     model = Fonte
 
     template_name = 'cadastros/form-excluir.html'
@@ -138,7 +160,9 @@ class FonteIDelete(DeleteView):
 
 
 
-class PaoeIDelete(DeleteView):
+class PaoeIDelete(LoginRequiredMixin, DeleteView):
+
+    login_url = reverse_lazy('login')
     model = Paoe
 
     template_name = 'cadastros/form-excluir.html'
@@ -151,18 +175,24 @@ class PaoeIDelete(DeleteView):
 ######### LISTVIEW #########
 
 
-class ProcessosList (ListView):
+class ProcessosList (LoginRequiredMixin, ListView):
+
+    login_url = reverse_lazy('login')
     model = Processos
 
     template_name = 'cadastros/listas/processos.html'
 
-class FonteList (ListView):
+class FonteList (LoginRequiredMixin, ListView):
+
+    login_url = reverse_lazy('login')
     model = Fonte
 
     template_name = 'cadastros/listas/fontes.html'
 
 
-class PaoeList(ListView):
+class PaoeList(LoginRequiredMixin, ListView):
+
+    login_url = reverse_lazy('login')
     model = Paoe
 
     template_name = 'cadastros/listas/paoe.html'
