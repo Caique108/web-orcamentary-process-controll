@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
 
+from cadastro.views import CampoCreate
+
 
 #Definindo os nomes de chamada para as URL's, e usar as mesmas na página urls.py   
 def login(request):
@@ -16,4 +18,7 @@ def home(request):
 
 def cadastro(request):
     return render (request, 'paginas/cadastro.html')
+
+
+
 

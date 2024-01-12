@@ -4,10 +4,11 @@
 
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<<<<<<< HEAD
 {% block bootstrap %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"   integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -17,26 +18,72 @@
 <body>
     {% block titulo %}
     <title>.::DEPLAN::.</title>
+=======
+    {% block bootstrap %}
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"   integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+>>>>>>> 1135957daa2cd4f4f5efc3468b5bb69b764b1d55
     {% endblock %}
 
+        {% block titulo %}
+        <title>.::DEPLAN::.</title>
+        {% endblock %}
 
-    {% block navbar %}
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1 ">
-        <div class="container">
+
+        {% block navbar %}
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1 ">
+            <div class="container">
+                
+                <a class="navbar-brand" href="{% url 'home' %}">
+                    <i class="bi bi-house-fill" aria-hidden="true"></i>
+                    Início
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Sobre nós!</a>
+                        </li>
+                    </ul>
+
+                    <ul class="navbar-nav">
+                    <!-- condicionando para trazer a lista apenas se o usuario estiver logado -->
+
+                        {% if request.user.is_authenticated %}
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Cadastros</a>
+
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="{% url 'cadastrar-indica' %}">Cadastro de Indicações</a></li>
+                                <li><a class="dropdown-item" href="{% url 'cadastrar-fonte' %}">Cadastro de Fontes</a></li>
+                                <li><a class="dropdown-item" href="{% url 'cadastrar-paoe' %}">Cadastro de PAOEs</a></li>
+                                <li><a class="dropdown-item" href="{% url 'cadastrar-pta' %}">Cadastro de PTA</a></li>
+                        
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown">
+
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Listas</a>
+
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="{% url 'listar-processos' %}">Processos</a></li>
+                                <li><a class="dropdown-item" href="{% url 'listar-fontes' %}">Fontes</a></li>
+                                <li><a class="dropdown-item" href="{% url 'listar-paoe' %}">PAOE</a></li>
             
-            <a class="navbar-brand" href="{% url 'home' %}">
-                <i class="bi bi-house-fill" aria-hidden="true"></i>
-                Início
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav">
+                            </ul>
+                        </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Sobre nós!</a>
+
+
+
                     </li>
+<<<<<<< HEAD
                 </ul>
                 <ul class="navbar-nav">
 
@@ -87,14 +134,32 @@
                             <i class="bi bi-person-circle" aria-hidden="true"></i>
                             <span id="username">Usuário</span>
                         </a>
+=======
+                
+                <!-- não consigo colocar essa bosta pra direita de forma alguma só tirando de dentro da box da navbar-->
+                
+                    <ul class="navbar-nav ">    
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-white text-center border rounded border-secondary mx-auto" href="{% url 'login' %}" 
+                                id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                                aria-haspopup="true">
+                                <i class="bi bi-person-circle" aria-hidden="true"></i>
+                                <span id="username">{{ user.username }}</span>
+                            </a>
+>>>>>>> 1135957daa2cd4f4f5efc3468b5bb69b764b1d55
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <a class="dropdown-item" href="#">
                                     <i class="bi bi-person-bounding-box" aria-hidden="true"></i>
                                     Meus dados</a>
+<<<<<<< HEAD
+=======
+                                
+>>>>>>> 1135957daa2cd4f4f5efc3468b5bb69b764b1d55
                                 <a class="dropdown-item" href="#">
                                     <i class="bi bi-lock-fill" aria-hidden="true"></i>
                                     Alterar Senha</a>
                                     <div class="dropdown-divider"></div>
+<<<<<<< HEAD
                                 <a class="dropdown-item" href="{% url 'logout' %}">
                                     <i class="bi bi-box-arrow-right" aria-hidden="true"></i>
                                 Sair</a>
@@ -108,11 +173,33 @@
                             <i class="bi bi-box-arrow-in-right" aria-hidden="true"></i>
                             Login
                         </a>
+=======
+                                <a class="dropdown-item" href="{% url 'logout' %}" >
+                                    <i class="bi bi-box-arrow-right" aria-hidden="true"></i>
+                                
+                                Sair</a>
+                            
+>>>>>>> 1135957daa2cd4f4f5efc3468b5bb69b764b1d55
 
-                    </li>
-                    {% endif %}
-                </ul>
+                            </div>
+                        </li>
+
+                        {% else %}
+                        
+                        <li class="nav-link p-0">
+                            <a class="nav-link text-white" href="{% url 'login' %}">
+                                <i class="bi bi-box-arrow-in-right" aria-hidden="true" aria-expanded="false"></i>
+                                Entrar
+                            </a>
+                        </li>
+
+                        {% endif %}
+
+                    </ul>
+                </div>
+                
             </div>
+<<<<<<< HEAD
 
         </div>
       </nav>
@@ -123,11 +210,26 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </body>
 </head>
+=======
+        </nav>
+        {% endblock %}
+>>>>>>> 1135957daa2cd4f4f5efc3468b5bb69b764b1d55
 
 
+        {% block conteudo %}
+        {% endblock %}
+    </head>
 
-{% block conteudo %}
 
+<<<<<<< HEAD
+=======
+{% block body %}
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+    </script>
+</body>
+{% endblock %}
+>>>>>>> 1135957daa2cd4f4f5efc3468b5bb69b764b1d55
 
 {% endblock %}
 
@@ -138,19 +240,18 @@
 
     
 
+
+    <div class="container py-4 py-md-5 px-4 px-md-3 ">
+
     <div class="container fixed-bottom rodape">
+
 
         <footer class="py-3 my-4 p-2 ">
             
                 <ul class="nav nav-pills justify-content-center border-bottom pb-3 mb-2 ">
                     
-                    <li class="nav-item">
-                        <a href="{% url 'home' %}" class="nav-link px-2  text-muted">Início</a>
-                    </li>
-                
-                    <li class="nav-item">
-                        <a href="{% url 'cadastro' %}" class="nav-link px-2  text-muted">Cadastros</a>
-                    </li>
+                    <p class="text-center text-muted">
+                    </p>
 
                 </ul>
 
