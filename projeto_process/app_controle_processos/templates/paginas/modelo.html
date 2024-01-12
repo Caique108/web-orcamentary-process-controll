@@ -20,38 +20,56 @@
     {% endblock %}
 
         {% block navbar %}
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1 ">
-            <div class="container">
-                
-                <a class="navbar-brand" href="{% url 'home' %}">
-                    <i class="bi bi-house-fill" aria-hidden="true"></i>
-                    Início
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                    <ul class="navbar-nav">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1 ">
+                <div class="container">
+                    
+                    <a class="navbar-brand" href="{% url 'home' %}">
+                        <i class="bi bi-house-fill" aria-hidden="true"></i>
+                        Início
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav">
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Sobre nós!</a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Sobre nós!</a>
+                            </li>
+                        </ul>
+
+                        
+                            </li>
+
+                            <li class="nav-item dropdown">
+
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Listas</a>
+
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <li><a class="dropdown-item" href="{% url 'listar-processos' %}">Processos</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'listar-fontes' %}">Fontes</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'listar-paoe' %}">PAOE</a></li>
+                
+                                </ul>
+                            </li>
+
+
+
+
                         </li>
                     </ul>
-
                     <ul class="navbar-nav">
+
                     <!-- condicionando para trazer a lista apenas se o usuario estiver logado -->
-
                         {% if request.user.is_authenticated %}
-
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Cadastros</a>
+                            <a class="nav-link dropdown-toggle" href="{% url 'cadastro' %}" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Cadastros</a>
 
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <li><a class="dropdown-item" href="{% url 'cadastrar-indica' %}">Cadastro de Indicações</a></li>
                                 <li><a class="dropdown-item" href="{% url 'cadastrar-fonte' %}">Cadastro de Fontes</a></li>
                                 <li><a class="dropdown-item" href="{% url 'cadastrar-paoe' %}">Cadastro de PAOEs</a></li>
                                 <li><a class="dropdown-item" href="{% url 'cadastrar-pta' %}">Cadastro de PTA</a></li>
-                        
                             </ul>
                         </li>
 
@@ -63,107 +81,65 @@
                                 <li><a class="dropdown-item" href="{% url 'listar-processos' %}">Processos</a></li>
                                 <li><a class="dropdown-item" href="{% url 'listar-fontes' %}">Fontes</a></li>
                                 <li><a class="dropdown-item" href="{% url 'listar-paoe' %}">PAOE</a></li>
-            
                             </ul>
                         </li>
 
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Visão Geral</a>
 
-
-
-                    </li>
-                </ul>
-                <ul class="navbar-nav">
-
-                 <!-- condicionando para trazer a lista apenas se o usuario estiver logado -->
-                    {% if request.user.is_authenticated %}
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="{% url 'cadastro' %}" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Cadastros</a>
-
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="{% url 'cadastrar-indica' %}">Cadastro de Indicações</a></li>
-                            <li><a class="dropdown-item" href="{% url 'cadastrar-fonte' %}">Cadastro de Fontes</a></li>
-                            <li><a class="dropdown-item" href="{% url 'cadastrar-paoe' %}">Cadastro de PAOEs</a></li>
-                            <li><a class="dropdown-item" href="{% url 'cadastrar-pta' %}">Cadastro de PTA</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="nav-item dropdown">
-
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Listas</a>
-
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="{% url 'listar-processos' %}">Processos</a></li>
-                            <li><a class="dropdown-item" href="{% url 'listar-fontes' %}">Fontes</a></li>
-                            <li><a class="dropdown-item" href="{% url 'listar-paoe' %}">PAOE</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Visão Geral</a>
-
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="#">DashBoard CPG</a></li>
-                            <li><a class="dropdown-item" href="#">DashBoard CEEPA</a></li>
-                            <li><a class="dropdown-item" href="#">Planejamento de compras ano()</a></li>
-                        </ul>
-                    </li>
-                </ul> 
-
-                <!-- não consigo colocar essa bosta pra direita de forma alguma só tirando de dentro da box da navbar-->
-                <ul class="navbar-nav ">    
-
-
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-white" href="{% url 'login' %}" 
-                            id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false"
-                            aria-haspopup="true">
-                            <i class="bi bi-person-circle" aria-hidden="true"></i>
-                            <span id="username">Usuário</span>
-                        </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="#">
-                                    <i class="bi bi-person-bounding-box" aria-hidden="true"></i>
-                                    Meus dados</a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="bi bi-lock-fill" aria-hidden="true"></i>
-                                    Alterar Senha</a>
-                                    <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="{% url 'logout' %}">
-                                    <i class="bi bi-box-arrow-right" aria-hidden="true"></i>
-                                Sair</a>
-                                
-                            </div>
-                    </li>
-                    {% else %}
-                    
-                    <li class="nav-link">
-                        <a class="nav-link text-white" href="{% url 'login' %}">
-                            <i class="bi bi-box-arrow-in-right" aria-hidden="true"></i>
-                            Login
-                        </a>
-
-                            </div>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="#">DashBoard CPG</a></li>
+                                <li><a class="dropdown-item" href="#">DashBoard CEEPA</a></li>
+                                <li><a class="dropdown-item" href="#">Planejamento de compras ano()</a></li>
+                            </ul>
                         </li>
+                    </ul> 
 
-                        {% else %}
-                        
-                        <li class="nav-link p-0">
-                            <a class="nav-link text-white" href="{% url 'login' %}">
-                                <i class="bi bi-box-arrow-in-right" aria-hidden="true" aria-expanded="false"></i>
-                                Entrar
+                    <!-- não consigo colocar essa bosta pra direita de forma alguma só tirando de dentro da box da navbar-->
+                    <ul class="navbar-nav ">    
+
+
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-white" href="{% url 'login' %}" 
+                                id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                                aria-haspopup="true">
+                                <i class="bi bi-person-circle" aria-hidden="true"></i>
+                                <span id="username">Usuário</span>
                             </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="#">
+                                        <i class="bi bi-person-bounding-box" aria-hidden="true"></i>
+                                        Meus dados</a>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="bi bi-lock-fill" aria-hidden="true"></i>
+                                        Alterar Senha</a>
+                                        <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="{% url 'logout' %}">
+                                        <i class="bi bi-box-arrow-right" aria-hidden="true"></i>
+                                    Sair</a>
+                                    
+                                </div>
                         </li>
+                        
+                            {% else %}
+                            
+                            <li class="nav-link p-0">
+                                <a class="nav-link text-white" href="{% url 'login' %}">
+                                    <i class="bi bi-box-arrow-in-right" aria-hidden="true" aria-expanded="false"></i>
+                                    Entrar
+                                </a>
+                            </li>
 
-                        {% endif %}
+                            {% endif %}
 
-                    </ul>
+                            </ul>
+                        </div>
+                        
+                    </div>
+
                 </div>
-                
-            </div>
-
-        </div>
-      </nav>
+            </nav>
     {% endblock %}
     
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -179,43 +155,27 @@
 
 
 
-{% endblock %}
+       
+
+
+ 
+            <footer class="py-3 my-4 p-2 ">
+                
+                    <ul class="nav nav-pills justify-content-center border-bottom pb-3 mb-2 ">
+                        
+                        <p class="text-center text-muted">
+                        </p>
+
+                    </ul>
+
+
+                    <p class="text-center text-muted">2023 <br> Corpo de Bombeiros Militares da Bahia <br> .::Departamento de Planejamento::.</p>
+                
+            </footer>
+
+</div>
 
 
 
-
-{% block footer %}
-
-    
-
-<<<<<<< HEAD
-    <div class="container py-4 py-md-5 px-4 px-md-3 ">
-=======
-<<<<<<< HEAD
-    <div class="container py-4 py-md-5 px-4 px-md-3 ">
-=======
-    <div class="container fixed-bottom rodape">
->>>>>>> a68f7db4dd60687706f38d5ef0de91d997e74859
->>>>>>> deplan/master
-
-        <footer class="py-3 my-4 p-2 ">
-            
-                <ul class="nav nav-pills justify-content-center border-bottom pb-3 mb-2 ">
-                    
-                    <p class="text-center text-muted">
-                    </p>
-
-                </ul>
-
-
-                <p class="text-center text-muted">2023 <br> Corpo de Bombeiros Militares da Bahia <br> .::Departamento de Planejamento::.</p>
-            
-        </footer>
-
-
-    </div>
-
-
-{% endblock %}
 
 </html>
