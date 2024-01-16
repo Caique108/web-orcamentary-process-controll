@@ -33,7 +33,7 @@
             <h3 class="">Entre na sua conta!</h3>
                 <!-- Form de confirmação de exclusão -->
         </div>
-        <form action="" method="post">
+        <form action="" method="POST">
           
             <!-- chamada do django para verificação segura -->
             {% csrf_token %}
@@ -41,8 +41,10 @@
             {{ form|crispy }}
 
             
+            
             <br><a href="{% url 'home' %}" class="btn btn-danger">Cancelar</a>
-            <button type="submit" class="btn btn-primary align-top">Entrar</button>
+            <button type="submit" class="btn btn-primary align-top ">Entrar</button>
+           
 
 
 
