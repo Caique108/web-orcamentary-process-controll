@@ -74,3 +74,6 @@ class Processos(models.Model):
     def __str__(self):
         return "{} - Fonte({}) {} - {} - {}".format(self.bbm, self.fonte2.fonte, self.paoe2, self.campo.nome, self.campo.descricao)
     
+
+
+    0
