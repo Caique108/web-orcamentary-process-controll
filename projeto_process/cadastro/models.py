@@ -3,7 +3,7 @@ from django.db import models
 
 # Create your models here.
 
-# Aqui criamos as classes que serão utilizadas para cadastrar qualquer coisa no sistema, desde login até os processos.
+# Aqui criamos as classes que serão alocadas no sqlite3 e que também será chamado na página views para a definição das entrys e etc.
 
 
 #essa classe foi usada como exemplo
@@ -16,7 +16,6 @@ class Campo(models.Model):
 
         return "{} ({})".format(self.nome, self.descricao)
     
-
 class Fonte(models.Model):
     fonte = models.DecimalField(verbose_name="Fonte", max_digits=3, decimal_places=0)
     desc_fonte = models.CharField(max_length=150, verbose_name="Descrição da fonte" )
@@ -29,8 +28,6 @@ class Fonte(models.Model):
     #Retorna a representação em STRING do objeto
     def __str__(self):
         return "{} ({})".format(self.fonte, self.desc_fonte)
-    
-
     
 class Paoe(models.Model):
     paoe = models.DecimalField(verbose_name="PAOE", max_digits=7, decimal_places=0)
@@ -45,9 +42,6 @@ class Paoe(models.Model):
     def __str__(self):
         return "{} ({})".format(self.paoe, self.desc_paoe)   
     
-
-    
-
 class Processos(models.Model):
     bbm = models.CharField(max_length=50, verbose_name="BBM")
     processo = models.CharField(max_length=150, verbose_name="Nº do Processo SEi")
@@ -74,6 +68,3 @@ class Processos(models.Model):
     def __str__(self):
         return "{} - Fonte({}) {} - {} - {}".format(self.bbm, self.fonte2.fonte, self.paoe2, self.campo.nome, self.campo.descricao)
     
-
-
-    0

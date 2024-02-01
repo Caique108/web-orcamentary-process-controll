@@ -10,10 +10,13 @@ from django.urls import reverse_lazy
 #trava as páginas para serem acessadas apenas com autenticação
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+from braces.views import GroupRequiredMixin
 
+# ---- Lembrando que essa página utilza os campos já criados no BD pelo arquivo "models.py" da referida pasta ----
 
+#Criando as views referentes aos cadastros, exclusões e edições da aplicação, utilizando o "braces" para a filtragem entre as permissões dos usuários.
 
-# Criando as views que apareceram no site, baseadas nas models de cadastro usando o mesmo template
+#Campo de Criação (Preenchimento/entry), dos dados.
 
 class CampoCreate(LoginRequiredMixin, CreateView):
     login_url = reverse_lazy('login')
@@ -25,8 +28,6 @@ class CampoCreate(LoginRequiredMixin, CreateView):
     template_name = 'cadastros/form.html'
     #caminho que vai ser a URL quando for sucesso!
     success_url = reverse_lazy('index')
-
-
 
 class ProcessosICreate(LoginRequiredMixin, CreateView):
     login_url = reverse_lazy('login')
@@ -62,7 +63,6 @@ class FonteICreate(LoginRequiredMixin, CreateView):
 
     success_url = reverse_lazy('listar-fontes')
 
-
 class PaoeICreate(LoginRequiredMixin, CreateView):
     login_url = reverse_lazy('login')
     model = Paoe
@@ -75,9 +75,9 @@ class PaoeICreate(LoginRequiredMixin, CreateView):
 
     success_url = reverse_lazy('listar-paoe')
 
-
-
 ######### UPDATE #########
+    
+    #Campo de Edição dos dados criados pelo "Create".
 
 class ProcessosIUpdate(LoginRequiredMixin, UpdateView):
 
@@ -102,7 +102,6 @@ class ProcessosIUpdate(LoginRequiredMixin, UpdateView):
 
     success_url = reverse_lazy('listar-processos')
 
-
 class FonteIUpdate(LoginRequiredMixin, UpdateView):
 
     login_url = reverse_lazy('login')
@@ -116,8 +115,6 @@ class FonteIUpdate(LoginRequiredMixin, UpdateView):
     template_name = 'cadastros/form.html'
 
     success_url = reverse_lazy('listar-fontes')
-
-
 
 class PaoeIUpdate(LoginRequiredMixin, UpdateView):
     login_url = reverse_lazy('login')
@@ -136,7 +133,7 @@ class PaoeIUpdate(LoginRequiredMixin, UpdateView):
 
 ######### DELETE #########
 
-
+#Campo de Exclusão dos dados já existentes.
 
 class ProcessosIDelete(LoginRequiredMixin, DeleteView):
 
@@ -147,8 +144,6 @@ class ProcessosIDelete(LoginRequiredMixin, DeleteView):
 
     success_url = reverse_lazy('listar-processos')
 
-
-
 class FonteIDelete(LoginRequiredMixin, DeleteView):
 
     login_url = reverse_lazy('login')
@@ -157,8 +152,6 @@ class FonteIDelete(LoginRequiredMixin, DeleteView):
     template_name = 'cadastros/form-excluir.html'
 
     success_url = reverse_lazy('listar-fontes')
-
-
 
 class PaoeIDelete(LoginRequiredMixin, DeleteView):
 
@@ -170,10 +163,9 @@ class PaoeIDelete(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy('listar-paoe')
 
 
-
-
 ######### LISTVIEW #########
 
+#Campo da listagem das informações já preenchidas no BD
 
 class ProcessosList (LoginRequiredMixin, ListView):
 
@@ -188,7 +180,6 @@ class FonteList (LoginRequiredMixin, ListView):
     model = Fonte
 
     template_name = 'cadastros/listas/fontes.html'
-
 
 class PaoeList(LoginRequiredMixin, ListView):
 

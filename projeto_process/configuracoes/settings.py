@@ -29,6 +29,7 @@ ALLOWED_HOSTS = ['*']
 
 
 # Application definition
+# Aqui são alocados todos os apps e extenções que serão utilizados no decorrer da aplicação
 
 INSTALLED_APPS = [
     'rest_framework',
@@ -43,7 +44,7 @@ INSTALLED_APPS = [
     'usuarios.apps.UsuariosConfig',
     'planodetrabalho.apps.PlanodetrabalhoConfig',
     'crispy_forms',
-    'crispy_bootstrap4'
+    'crispy_bootstrap4',
     
     
 ]
@@ -148,7 +149,7 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-#configuração de autenticação
+#configuração de autenticação, colocando a página de direcionamento para quando o usuário for logar ou deslogar na aplicação, e a denominação da página de login
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 LOGIN_URL = 'login'
