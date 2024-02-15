@@ -10,6 +10,7 @@ urlpatterns = [
     path('painel/', painel, name='painel'),
     path('modelo/', modelo, name='modelo'),
     path('', home, name='home'),
+    path('cadastro', cadastro, name='cadastro'),
     
     
 

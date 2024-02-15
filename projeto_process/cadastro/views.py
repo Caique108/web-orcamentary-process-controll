@@ -10,7 +10,11 @@ from django.urls import reverse_lazy
 #trava as páginas para serem acessadas apenas com autenticação
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+
+# ---- GrouprequiredMixin, controla quais páginas os usuarios de certo grupo podem acessar
 from braces.views import GroupRequiredMixin
+
+
 
 # ---- Lembrando que essa página utilza os campos já criados no BD pelo arquivo "models.py" da referida pasta ----
 
@@ -29,8 +33,11 @@ class CampoCreate(LoginRequiredMixin, CreateView):
     #caminho que vai ser a URL quando for sucesso!
     success_url = reverse_lazy('index')
 
-class ProcessosICreate(LoginRequiredMixin, CreateView):
+class ProcessosICreate(GroupRequiredMixin, LoginRequiredMixin, CreateView):
     login_url = reverse_lazy('login')
+
+    group_required = [u'DEPLAN',]
+
     model = Processos
 
     fields = [

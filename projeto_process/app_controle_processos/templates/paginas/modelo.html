@@ -31,17 +31,17 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                    <ul class="navbar-nav">
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Sobre nós!</a>
-                        </li>
-                    </ul>
 
                     <ul class="navbar-nav">
                     <!-- condicionando para trazer a lista apenas se o usuario estiver logado -->
 
                         {% if request.user.is_authenticated %}
+                        <ul class="navbar-nav">
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'cadastro' %}">Cadastros</a>
+                            </li>
+                        </ul>
 
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Cadastros</a>
@@ -103,14 +103,14 @@
                         </li>
 
                         {% else %}
-                        
+                        <div>
                         <li class="nav-link p-0">
                             <a class="nav-link text-white" href="{% url 'login' %}">
                                 <i class="bi bi-box-arrow-in-right" aria-hidden="true" aria-expanded="false"></i>
                                 Entrar
                             </a>
                         </li>
-
+                        
                         {% endif %}
 
                     </ul>

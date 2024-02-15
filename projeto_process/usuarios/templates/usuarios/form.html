@@ -4,39 +4,29 @@
 
 {% load static %}
 
-
-
 {% load crispy_forms_tags %}
 
 <!-- Modelo utilizado para a página de login -->
 
 {% block navbar %}
-<nav class="navbar sticky-top navbar-dark bg-dark text-white justify-content-center ">
-    <a class="navbar-brand border rounded border-secondary p-2 mb-1" href="{% url 'home' %}">
+<nav class="navbar sticky-top navbar-dark bg-dark text-white justify-content-center">
+    <a class="navbar-brand " href="{% url 'home' %}">
+        
         <i class="bi bi-activity"></i> DEPARTAMENTO DE PLANEJAMENTO <i class="bi bi-activity"></i></a>
+        
   </nav>
+
 {% endblock %}
+
 
 
 {% block conteudo %}
 
 <div class="d-flex justify-content-sm-center mb-3 p-4">
-    {% if request.user.is_authenticated %}
-    <div class="col-md-8 mx-auto">
-        
-        <h3>Ação não permitida!</h3>
-        <hr>
-        <p class="lead"><strong>Houve algum problema ao processar a ação desejada ou você não tem permissão para isso.</strong></p>
-            
-    </div>
-    {% else %}
-
     <div class='col-md-4 mx-auto '> 
-
+            
         <div class="text-center">
-            <a href="{% url 'home' %}">
             <img class="mb-2 rounded" src="{% static 'img/CBMBA-LOGO.png' %}" alt="" width="100" >
-         </a>
         </div>
         
         <div class="text-center p-2">
@@ -60,7 +50,6 @@
 
         </form>
     </div>
-        {% endif %}
 </div>
 
 {% endblock %}
