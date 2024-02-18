@@ -9,7 +9,7 @@ Para rodar é necessário instalar alguns plugins adicionais, são eles:
 
     install pip
     
-    pip install cryspy_form
+    pip install django-crispy-forms
     
     pip install crispy-bootstrap4
 
