@@ -11,8 +11,8 @@
 <!-- Modelo utilizado para a página de login -->
 
 {% block navbar %}
-<nav class="navbar sticky-top navbar-dark bg-dark text-white justify-content-center ">
-    <a class="navbar-brand border rounded border-secondary p-2 mb-1" href="{% url 'home' %}">
+<nav class="navbar sticky-top navbar-dark bg-dark text-white justify-content-center   ">
+    <a class="navbar-brand border rounded border-secondary p-2 mb-1 mx-auto" href="{% url 'home' %}">
         <i class="bi bi-activity"></i> DEPARTAMENTO DE PLANEJAMENTO <i class="bi bi-activity"></i></a>
   </nav>
 {% endblock %}
@@ -20,7 +20,7 @@
 
 {% block conteudo %}
 
-<div class="d-flex justify-content-sm-center mb-3 p-4">
+<div class="d-flex justify-content-sm-center mb-3 p-4 l-2">
     {% if request.user.is_authenticated %}
     <div class="col-md-8 mx-auto">
         
@@ -35,7 +35,7 @@
 
         <div class="text-center">
             <a href="{% url 'home' %}">
-            <img class="mb-2 rounded" src="{% static 'img/CBMBA-LOGO.png' %}" alt="" width="100" >
+            <img class="mb-2 rounded mx-auto" src="{% static 'img/CBMBA-LOGO.png' %}" alt="" width="100" >
          </a>
         </div>
         

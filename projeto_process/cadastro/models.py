@@ -51,8 +51,8 @@ class Processos(models.Model):
     paoe2 = models.ForeignKey(Paoe, on_delete=models.PROTECT, verbose_name="PAOE")
 
     elemento = models.CharField(max_length=50)
-    ano_da_indicação = models.DateField(help_text="Insira a data neste formato: <em>DD-MM-YYYY</em>.")
-    valor_solicitado_ind = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Valor Solicitado" )
+    ano_da_indicação = models.DateField(help_text="Insira a data neste formato: <em>DD/MM/YYYY</em>.")
+    valor_solicitado_ind = models.DecimalField(max_digits=20, decimal_places=2, verbose_name="Valor Solicitado" )
     valor_ind = models.DecimalField(max_digits=20, decimal_places=2, verbose_name="Valor da Indicação")
     descricao = models.CharField(max_length=150, verbose_name="Descrição")
     contrato = models.CharField(max_length=150, verbose_name="Contrato", blank=True, null=True)
