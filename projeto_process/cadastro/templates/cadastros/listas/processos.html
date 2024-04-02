@@ -9,7 +9,7 @@
     <hr>
     <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
         <div class="mb-3 mb-md-0 d-flex text-nowrap ">
-        <a href="{% url 'cadastrar-indica' %}" class="btn btn-primary btn-md rounded-2" title="Cadastrar novo processo">Adicionar Processo</a>
+        <a href="{% url 'cadastrar-processo' %}" class="btn btn-primary btn-md rounded-2" title="Cadastrar novo processo">Adicionar Processo</a>
         </div>
         <h3>Processos Cadastrados</h3>
         
@@ -34,7 +34,7 @@
         <tr>
             <!-- CABEÇALHO DAS COLUNAS -->
            
-            <td align="center">{{ Processos.bbm }}</td>
+            <td align="center">{{ Processos.bbm2 }}</td>
             <td align="center">{{ Processos.processo }}</td>
             <td align="center">{{ Processos.fonte2 }}</td>
             <td align="center">{{ Processos.valor_ind }} </td>
@@ -57,8 +57,8 @@
         </tr>
 
         {% empty %}
-        <tr>
-            <td colspan="5"> Nenhum campo registrado.</td>
+        <tr class="text-center">
+            <td colspan="5" class="text-dark bg-light"> Nenhum campo registrado.</td>
 
         </tr>
 

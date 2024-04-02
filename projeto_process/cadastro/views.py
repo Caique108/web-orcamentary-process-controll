@@ -1,18 +1,19 @@
 #importando superglobal para criação de view do django
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
-#importando modelos da pasta cadastros
-from .models import Campo,Processos,Fonte,Paoe
-
+# ---- GrouprequiredMixin, controla quais páginas os usuarios de certo grupo podem acessar
+from braces.views import GroupRequiredMixin
+#trava as páginas para serem acessadas apenas com autenticação
+from django.contrib.auth.mixins import LoginRequiredMixin
 #chamada para para onde ir após a comfirmação na página
 from django.urls import reverse_lazy
 
-#trava as páginas para serem acessadas apenas com autenticação
-from django.contrib.auth.mixins import LoginRequiredMixin
+
+#____#importando modelos da pasta cadastros_______#
+    
+from .models import Campo,Processos,Fonte,Paoe,BBM,Elemento
 
 
-# ---- GrouprequiredMixin, controla quais páginas os usuarios de certo grupo podem acessar
-from braces.views import GroupRequiredMixin
 
 
 
@@ -41,16 +42,16 @@ class ProcessosICreate(GroupRequiredMixin, LoginRequiredMixin, CreateView):
     model = Processos
 
     fields = [
-            'bbm' ,
-            'processo' ,
-            'fonte2' ,
+            'processo',
+            'valor_solicitado_ind',
+            'descricao',
+            'bbm2',
+            'fonte2',
             'paoe2',
-            'elemento' ,
-            'ano_da_indicação' ,
-            'valor_solicitado_ind' ,
-            'valor_ind' ,
-            'descricao' ,
-            'contrato' ,
+            'elemento2',
+            'data_da_indicação',
+            'valor_ind',
+            'contrato',
             'campo'
             ]
     
@@ -81,6 +82,34 @@ class PaoeICreate(LoginRequiredMixin, CreateView):
     template_name = 'cadastros/form.html'
 
     success_url = reverse_lazy('listar-paoe')
+
+class BBMICreate(LoginRequiredMixin,CreateView):
+    login_url = reverse_lazy('login')
+    model = BBM
+
+    fields = [
+        'desc_unidade',
+        'sigla_unidade',
+        'localidade',
+
+    ]
+    template_name = 'cadastros/form.html'
+
+    success_url = reverse_lazy('listar-bbm')
+
+
+class ElementoICreate(LoginRequiredMixin,CreateView):
+    login_url = reverse_lazy('login')
+    model = Elemento
+
+    fields = [
+        'elemento',
+        'desc_elemento',
+        
+    ]
+    template_name = 'cadastros/form.html'
+
+    success_url = reverse_lazy('listar-elemento')
 
 ######### UPDATE #########
     
@@ -135,7 +164,30 @@ class PaoeIUpdate(LoginRequiredMixin, UpdateView):
 
     success_url = reverse_lazy('listar-paoe')
 
+class BBMIUpdate(LoginRequiredMixin, UpdateView):
+    login_url = reverse_lazy('login')
+    model = BBM
 
+    fields = [
+        'sigla_unidade',
+        'localidade'
+    ]
+    template_name = 'cadastros/form.html'
+
+    success_url = reverse_lazy('listar-bbm')
+
+class ElementoIUpdate(LoginRequiredMixin, UpdateView):
+    login_url = reverse_lazy('login')
+    model = Elemento
+
+    fields = [
+        'elemento',
+        'desc_elemento',
+        
+    ]
+    template_name = 'cadastros/form.html'
+
+    success_url = reverse_lazy('listar-elemento')
 
 
 ######### DELETE #########
@@ -169,6 +221,24 @@ class PaoeIDelete(LoginRequiredMixin, DeleteView):
 
     success_url = reverse_lazy('listar-paoe')
 
+class BBMIDelete(LoginRequiredMixin, DeleteView):
+
+    login_url = reverse_lazy('login')
+    model = BBM
+
+    template_name = 'cadastros/form-excluir.html'
+
+    success_url = reverse_lazy('listar-bbm')
+
+class ElementoIDelete(LoginRequiredMixin, DeleteView):
+
+    login_url = reverse_lazy('login')
+    model = Elemento
+
+    template_name = 'cadastros/form-excluir.html'
+
+    success_url = reverse_lazy('listar-elemento')
+
 
 ######### LISTVIEW #########
 
@@ -194,5 +264,19 @@ class PaoeList(LoginRequiredMixin, ListView):
     model = Paoe
 
     template_name = 'cadastros/listas/paoe.html'
+
+class BBMList(LoginRequiredMixin, ListView):
+
+    login_url = reverse_lazy('login')
+    model = BBM
+
+    template_name = 'cadastros/listas/bbm.html'
+
+class ElementoList(LoginRequiredMixin, ListView):
+
+    login_url = reverse_lazy('login')
+    model = Elemento
+
+    template_name = 'cadastros/listas/elemento.html'
 
 

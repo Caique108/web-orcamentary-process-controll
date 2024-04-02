@@ -1,4 +1,6 @@
 from django.db import models
+from django.utils import timezone
+from django.contrib.auth.models import User
 
 
 # Create your models here.
@@ -30,7 +32,7 @@ class Fonte(models.Model):
         return "{} ({})".format(self.fonte, self.desc_fonte)
     
 class Paoe(models.Model):
-    paoe = models.DecimalField(verbose_name="PAOE", max_digits=7, decimal_places=0)
+    paoe = models.CharField(verbose_name="PAOE", max_length=150)
     desc_paoe = models.CharField(max_length=150, verbose_name="Descrição da PAOE" )
 
     class Meta:
@@ -40,31 +42,52 @@ class Paoe(models.Model):
 
     #Retorna a representação em STRING do objeto
     def __str__(self):
-        return "{} ({})".format(self.paoe, self.desc_paoe)   
+        return "{} ({}) ".format(self.paoe, self.desc_paoe)   
     
+class BBM(models.Model):
+    desc_unidade = models.CharField(max_length=50, verbose_name="Descrição da Unidade", default="",help_text='Nome por extenso da unidade.')
+    sigla_unidade = models.CharField(max_length=12, verbose_name="Sigla da Unidade", help_text='Exemplo: <strong>SCG</strong>.')
+
+    localidade = models.CharField(max_length=30, verbose_name="Município", help_text="Localidade em que a UBM está situada.")
+
+    def __str__(self):
+        return "{} ({}) ".format(self.sigla_unidade, self.localidade)  
+
+class Elemento(models.Model):
+    
+    elemento = models.CharField(max_length=30, verbose_name="Elemento")
+    desc_elemento = models.CharField(max_length=250, verbose_name="Descrição do elemento")
+
+    def __str__(self):
+        return "{} ({}) ".format(self.elemento, self.desc_elemento)  
+
 class Processos(models.Model):
-    bbm = models.CharField(max_length=50, verbose_name="BBM")
+    
     processo = models.CharField(max_length=150, verbose_name="Nº do Processo SEi")
     
+    bbm2 = models.ForeignKey(BBM, on_delete=models.PROTECT, verbose_name="BBM")
     fonte2 = models.ForeignKey(Fonte, on_delete=models.PROTECT, verbose_name="Fonte")
-
     paoe2 = models.ForeignKey(Paoe, on_delete=models.PROTECT, verbose_name="PAOE")
+    elemento2 = models.ForeignKey(Elemento, on_delete=models.PROTECT, verbose_name="Elemento")
 
-    elemento = models.CharField(max_length=50)
-    ano_da_indicação = models.DateField(help_text="Insira a data neste formato: <em>DD/MM/YYYY</em>.")
+    data_da_indicação = models.DateField(default=timezone.now)
     valor_solicitado_ind = models.DecimalField(max_digits=20, decimal_places=2, verbose_name="Valor Solicitado" )
     valor_ind = models.DecimalField(max_digits=20, decimal_places=2, verbose_name="Valor da Indicação")
     descricao = models.CharField(max_length=150, verbose_name="Descrição")
     contrato = models.CharField(max_length=150, verbose_name="Contrato", blank=True, null=True)
     
+    # relaciona a classe ao usuario, podendo visualizar apenas oque o usuario lançou
+    # usuario = models.ForeignKey(User, on_delete=models.PROTECT)
+
     campo = models.ForeignKey(Campo, on_delete=models.PROTECT)
 
     class Meta:
         constraints = [
-            models.UniqueConstraint(fields=['processo', 'ano_da_indicação'], name='processo do ano')
+            models.UniqueConstraint(fields=['processo', 'data_da_indicação','fonte2','paoe2','bbm2'], name='processo do ano')
         ]
 
     #Retorna a representação em STRING do objeto
     def __str__(self):
-        return "{} - Fonte({}) {} - {} - {}".format(self.bbm, self.fonte2.fonte, self.paoe2, self.campo.nome, self.campo.descricao)
+        return "{} - Fonte({}) {} - {} - {}".format(self.bbm2, self.fonte2.fonte, self.paoe2, self.campo.nome, self.campo.descricao)
     
+ 
