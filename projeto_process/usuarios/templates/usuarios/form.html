@@ -55,8 +55,13 @@
 {% endblock %}
 
 {% block footer %}
+
 <footer>
-    <p class="mt-5 mb-3 text-muted text-center p-2">Departamento de Planejamento<br>Corpo de Bombeiros Militares da BAHIA<br>© 2016–2023</p>
+    <p class="mt-5 mb-3 text-muted text-center p-2" id="ano"></p>
+    
+    <script>const d = new Date();
+    document.getElementById("ano").innerHTML = "Departamento de Planejamento<br>Corpo de Bombeiros Militares da BAHIA<br>© 2016-" + d.getFullYear()</script>
+        
 </footer>
 {% endblock %}
 

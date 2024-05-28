@@ -167,14 +167,13 @@
         <footer class="py-3 my-4 p-2 ">
             
                 <ul class="nav nav-pills justify-content-center border-bottom pb-3 mb-2 ">
-                    
-                    <p class="text-center text-muted">
-                    </p>
-
+                    <p class="text-center text-muted"></p>
                 </ul>
+    
 
-
-                <p class="text-center text-muted">2023 <br> Corpo de Bombeiros Militares da Bahia <br> .::Departamento de Planejamento::.</p>
+                <p class="text-center text-muted" id="ano_f"></p>
+                <script>const d = new Date();
+                    document.getElementById("ano_f").innerHTML = "<br> Corpo de Bombeiros Militares da Bahia <br> .::Departamento de Planejamento::.<br>© 2016-"+d.getFullYear()</script>
             
         </footer>
 
