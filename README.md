@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img  title="CCCout" src="./assets/Banner.png" alt="20" width="250" />
+  <img  title="CCCout" src="./assets/Banner.png"  />
 </h1>
 
 ## Olá, este é o meu primeiro projeto.
