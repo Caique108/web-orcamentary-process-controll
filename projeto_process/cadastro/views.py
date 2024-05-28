@@ -9,6 +9,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 
 
+
+
+
 #____#importando modelos da pasta cadastros_______#
     
 from .models import Campo,Processos,Fonte,Paoe,BBM,Elemento
@@ -36,13 +39,9 @@ class CampoCreate(LoginRequiredMixin, CreateView):
 
 class ProcessosICreate(GroupRequiredMixin, LoginRequiredMixin, CreateView):
     login_url = reverse_lazy('login')
-
     group_required = [u'DEPLAN',]
-
     model = Processos
-
-    fields = [
-            'processo',
+    fields = ['processo',
             'valor_solicitado_ind',
             'descricao',
             'bbm2',
@@ -52,12 +51,19 @@ class ProcessosICreate(GroupRequiredMixin, LoginRequiredMixin, CreateView):
             'data_da_indicação',
             'valor_ind',
             'contrato',
-            'campo'
-            ]
-    
-    template_name = 'cadastros/form.html'
+            'campo']
 
-    success_url = reverse_lazy('listar-processos')
+    template_name = 'cadastros/form.html'
+    success_url = reverse_lazy('listar-processo')
+    
+    def form_valid(self, form):
+        #Pegando o usuario que fez a requisição da classe user do django
+        form.instance.usuario = self.request.user
+
+        url = super().form_valid(form)
+
+        return url
+    
 
 class FonteICreate(LoginRequiredMixin, CreateView):
     login_url = reverse_lazy('login')
@@ -121,22 +127,22 @@ class ProcessosIUpdate(LoginRequiredMixin, UpdateView):
     model = Processos
 
     fields = [
-            'bbm' ,
-            'processo' ,
-            'fonte2' ,
+            'processo',
+            'valor_solicitado_ind',
+            'descricao',
+            'bbm2',
+            'fonte2',
             'paoe2',
-            'elemento' ,
-            'ano_da_indicação' ,
-            'valor_solicitado_ind' ,
-            'valor_ind' ,
-            'descricao' ,
-            'contrato' ,
+            'elemento2',
+            'data_da_indicação',
+            'valor_ind',
+            'contrato',
             'campo'
             ]
     
     template_name = 'cadastros/form.html'
 
-    success_url = reverse_lazy('listar-processos')
+    success_url = reverse_lazy('listar-processo')
 
 class FonteIUpdate(LoginRequiredMixin, UpdateView):
 
@@ -201,7 +207,7 @@ class ProcessosIDelete(LoginRequiredMixin, DeleteView):
 
     template_name = 'cadastros/form-excluir.html'
 
-    success_url = reverse_lazy('listar-processos')
+    success_url = reverse_lazy('listar-processo')
 
 class FonteIDelete(LoginRequiredMixin, DeleteView):
 

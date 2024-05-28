@@ -32,7 +32,7 @@ urlpatterns = [
 
 
     # ---- EXCLUSÃO ---- #
-    path('excluir/processo/<int:pk>/', ProcessosIDelete.as_view(), name='excluir-cadastro-ind'),
+    path('excluir/processo/<int:pk>/', ProcessosIDelete.as_view(), name='excluir-processo'),
     path('excluir/fonte/<int:pk>/', FonteIDelete.as_view(), name='excluir-fonte'),
     path('excluir/paoe/<int:pk>/', PaoeIDelete.as_view(), name='excluir-paoe'),
     path('excluir/bbm/<int:pk>/', BBMIDelete.as_view(), name='excluir-bbm'),

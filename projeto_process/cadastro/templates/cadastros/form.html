@@ -1,15 +1,8 @@
 {% extends 'paginas/modelo.html' %}
 
-
-
 {% load static %}
 
-{% load l10n %}
-
 {% load crispy_forms_tags %}
-
-
-    css
 
 
 {% block conteudo %}
@@ -17,29 +10,51 @@
     
     <h3 class="my-4">Cadastrar Registros</h3>
     <hr>
-    <p class="lead ">
-        Preencha todos os campos obrigatórios:
-    </p>
+    <p class="lead ">Preencha todos os campos obrigatórios:</p>
     
-    
-
-
     <!-- Form de confirmação de exclusão -->
+    <div class="col-sm">
+        <form action="" method="POST" class="form-inline">
+            <!-- chamada do django para verificação segura -->
+                
+            {% csrf_token %}
 
-    <form action="" method="post">
-        <!-- chamada do django para verificação segura -->
-        
-        {% csrf_token %}
-
-        <!-- chamada do django que transforma o form em paragrafo -->
-        {{ form|crispy }}
-
-        <br><button type="submit" class="btn btn-primary mg-2 p-2">Cadastrar</button>
-
-
-
-    </form>
+            <!-- chamada do django que transforma o form em paragrafo -->
+            {{ form|crispy }}
+                
+            <br><button type="submit" class="btn btn-primary mg-2 p-2">Cadastrar</button>
+        </form>
+    </div>
 </div>
+{% endblock %}
+
+{% block script %}
+<script src="{% static 'js/jquery.mask.min.js' %}"></script>
+<script src="{% static 'js/jquery.maskMoney.min.js' %}"></script>
+<script>
+// jquery formatando máscaras
+    $(document).ready(function(){
+        $("#id_data_da_indicação").mask("00/00/0000",  {placeholder: "dd/mm/aaaa"});
+        
+       
+        $('#id_valor_ind').maskMoney({
+            prefix:'R$',
+            allowNegative: true,
+            thousands:'.', 
+            decimal:',',
+            affixesStay:true});
+        
+        $('#id_valor_solicitado_ind').maskMoney({
+            prefix:'R$',
+            allowNegative: true,
+            thousands:'.', 
+            decimal:',',
+            affixesStay:true});
+        });
+
+</script>
+
 
 
 {% endblock %}
+

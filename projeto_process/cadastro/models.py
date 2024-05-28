@@ -1,9 +1,11 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from django import forms
+import datetime
 
 
-# Create your models here.
+
 
 # Aqui criamos as classes que serão alocadas no sqlite3 e que também será chamado na página views para a definição das entrys e etc.
 
@@ -68,23 +70,25 @@ class Processos(models.Model):
     bbm2 = models.ForeignKey(BBM, on_delete=models.PROTECT, verbose_name="BBM")
     fonte2 = models.ForeignKey(Fonte, on_delete=models.PROTECT, verbose_name="Fonte")
     paoe2 = models.ForeignKey(Paoe, on_delete=models.PROTECT, verbose_name="PAOE")
-    elemento2 = models.ForeignKey(Elemento, on_delete=models.PROTECT, verbose_name="Elemento")
+    elemento2 = models.ForeignKey(Elemento, on_delete=models.PROTECT, verbose_name="Elemento", blank=True, null=True)
+    usuario = models.ForeignKey(User, on_delete=models.PROTECT,)
 
-    data_da_indicação = models.DateField(default=timezone.now)
-    valor_solicitado_ind = models.DecimalField(max_digits=20, decimal_places=2, verbose_name="Valor Solicitado" )
-    valor_ind = models.DecimalField(max_digits=20, decimal_places=2, verbose_name="Valor da Indicação")
+    data_da_indicação = models.DateField(verbose_name="Data")
+    valor_solicitado_ind = models.CharField(max_length=2000, verbose_name="Valor Solicitado", default="R$0,00", )
+    valor_ind = models.CharField(max_length=2000, verbose_name="Valor da Indicação", default="R$0,00")
     descricao = models.CharField(max_length=150, verbose_name="Descrição")
     contrato = models.CharField(max_length=150, verbose_name="Contrato", blank=True, null=True)
     
+
     # relaciona a classe ao usuario, podendo visualizar apenas oque o usuario lançou
     # usuario = models.ForeignKey(User, on_delete=models.PROTECT)
 
     campo = models.ForeignKey(Campo, on_delete=models.PROTECT)
 
-    class Meta:
-        constraints = [
-            models.UniqueConstraint(fields=['processo', 'data_da_indicação','fonte2','paoe2','bbm2'], name='processo do ano')
-        ]
+    # class Meta:
+    #     constraints = [
+    #         models.UniqueConstraint(fields=['processo', 'data_da_indicação','fonte2','paoe2','bbm2'], name='processo do ano')
+    #     ]
 
     #Retorna a representação em STRING do objeto
     def __str__(self):
