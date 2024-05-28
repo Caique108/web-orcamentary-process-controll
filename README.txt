@@ -1,11 +1,9 @@
-Olá, este é o meu primeiro projeto.
+## Olá, este é o meu primeiro projeto.
 
-Irei tentar fazer um sistema "Web" de controle de processos, ultilizando phyton e sqlite3.
+>Irei tentar fazer um sistema "Web" de controle de processos, ultilizando phyton e sqlite3.
 
 
-================================================================================================================
-
-Para rodar é necessário instalar alguns plugins adicionais, são eles:
+## Para rodar é necessário instalar alguns plugins adicionais, são eles:
 
     install pip
 
