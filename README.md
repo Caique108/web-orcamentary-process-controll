@@ -1,3 +1,7 @@
+{% load static %}
+<h1 align="center">
+  <img alt="NextLevelWeek" title="#NextLevelWeek" src="{% static 'img/CBMBA-LOGO.png' %}" />
+</h1>
 ## Olá, este é o meu primeiro projeto.
 
 >Irei tentar fazer um sistema "Web" de controle de processos, ultilizando phyton e sqlite3.
