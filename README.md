@@ -1,6 +1,4 @@
-<h1 align="center">
-  <img  title="CCCout" src="./assets/Banner.png"  />
-</h1>
+
 
 ## Olá, este é o meu primeiro projeto.
 
