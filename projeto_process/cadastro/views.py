@@ -5,8 +5,11 @@ from django.views.generic.list import ListView
 from braces.views import GroupRequiredMixin
 #trava as páginas para serem acessadas apenas com autenticação
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.admin.widgets import AdminDateWidget
+from datetime import datetime
 #chamada para para onde ir após a comfirmação na página
 from django.urls import reverse_lazy
+
 
 
 
@@ -52,8 +55,14 @@ class ProcessosICreate(GroupRequiredMixin, LoginRequiredMixin, CreateView):
             'valor_ind',
             'contrato',
             'campo']
+    def get_form(self, form_class=None):
+        form = super(ProcessosICreate, self).get_form(form_class)
+        form.fields['data_da_indicação'].widget = AdminDateWidget(attrs={'type': 'date', 'max': datetime.now().date()})
+        return form
 
-    template_name = 'cadastros/form.html'
+
+
+    template_name = 'cadastros/form_processo.html'
     success_url = reverse_lazy('listar-processo')
     
     def form_valid(self, form):
@@ -140,9 +149,13 @@ class ProcessosIUpdate(LoginRequiredMixin, UpdateView):
             'campo'
             ]
     
-    template_name = 'cadastros/form.html'
+    template_name = 'cadastros/form_processo.html'
 
     success_url = reverse_lazy('listar-processo')
+    def get_form(self, form_class=None):
+        form = super(ProcessosIUpdate, self).get_form(form_class)
+        form.fields['data_da_indicação'].widget = AdminDateWidget(attrs={'type': 'date', 'max': datetime.now().date()})
+        return form
 
 class FonteIUpdate(LoginRequiredMixin, UpdateView):
 

@@ -6,15 +6,15 @@
 
 
 {% block conteudo %}
-<div class='container'> 
-    
+
+
+<div class='container'>   
     <h3 class="my-4">Cadastrar Registros</h3>
     <hr>
-    <p class="lead ">Preencha todos os campos obrigatórios:</p>
-    
-    <!-- Form de confirmação de exclusão -->
-    <div class="col-sm">
-        <form action="" method="POST" class="form-inline">
+
+    <div class="col-5">
+        
+        <form action="" method="POST" class="form-inline ">
             <!-- chamada do django para verificação segura -->
                 
             {% csrf_token %}
@@ -23,6 +23,7 @@
             {{ form|crispy }}
                 
             <br><button type="submit" class="btn btn-primary mg-2 p-2">Cadastrar</button>
+            
         </form>
     </div>
 </div>
@@ -36,7 +37,6 @@
     $(document).ready(function(){
         $("#id_data_da_indicação").mask("00/00/0000",  {placeholder: "dd/mm/aaaa"});
         
-       
         $('#id_valor_ind').maskMoney({
             prefix:'R$',
             allowNegative: true,
@@ -51,7 +51,6 @@
             decimal:',',
             affixesStay:true});
         });
-
 </script>
 
 

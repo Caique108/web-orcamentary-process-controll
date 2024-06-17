@@ -1,8 +1,8 @@
 from django.db import models
-from django.utils import timezone
-from django.contrib.auth.models import User
 from django import forms
-import datetime
+from django.contrib.admin.widgets import AdminDateWidget
+from django.contrib.auth.models import User
+
 
 
 
@@ -66,14 +66,12 @@ class Elemento(models.Model):
 class Processos(models.Model):
     
     processo = models.CharField(max_length=150, verbose_name="Nº do Processo SEi")
-    
     bbm2 = models.ForeignKey(BBM, on_delete=models.PROTECT, verbose_name="BBM")
     fonte2 = models.ForeignKey(Fonte, on_delete=models.PROTECT, verbose_name="Fonte")
     paoe2 = models.ForeignKey(Paoe, on_delete=models.PROTECT, verbose_name="PAOE")
     elemento2 = models.ForeignKey(Elemento, on_delete=models.PROTECT, verbose_name="Elemento", blank=True, null=True)
     usuario = models.ForeignKey(User, on_delete=models.PROTECT,)
-
-    data_da_indicação = models.DateField(verbose_name="Data")
+    data_da_indicação = models.DateField(verbose_name="Data da indicação")
     valor_solicitado_ind = models.CharField(max_length=2000, verbose_name="Valor Solicitado", default="R$0,00", )
     valor_ind = models.CharField(max_length=2000, verbose_name="Valor da Indicação", default="R$0,00")
     descricao = models.CharField(max_length=150, verbose_name="Descrição")
@@ -93,5 +91,4 @@ class Processos(models.Model):
     #Retorna a representação em STRING do objeto
     def __str__(self):
         return "{} - Fonte({}) {} - {} - {}".format(self.bbm2, self.fonte2.fonte, self.paoe2, self.campo.nome, self.campo.descricao)
-    
  
