@@ -13,3 +13,19 @@
 - pip install django-braces
 
 
+
+## Utilidades
+
+- Tela de Login
+- Funcionalidade de LogOut
+- HomePage
+- Proteção de url para user em logoff
+- Cadastro
+- Lista de cadastro
+- Exclusão/Edição de Cadastro
+- Máscaras de R$ e data
+- Usuário
+- Registro de novo usuário
+- 
+
+
