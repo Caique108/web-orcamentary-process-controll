@@ -45,8 +45,6 @@ INSTALLED_APPS = [
     'planodetrabalho.apps.PlanodetrabalhoConfig',
     'crispy_forms',
     'crispy_bootstrap4',
-    
-    
 ]
 
 #CRISPY FORMS
@@ -121,7 +119,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'pt-BR'
+LANGUAGE_CODE = 'pt-br'
 
 TIME_ZONE = 'America/Sao_Paulo'
 
@@ -130,7 +128,8 @@ USE_I18N = True
 USE_TZ = True
 
 
-DATE_INPUT_FORMATS = ['%d-%m-%Y']  #'03/04/2024'
+DATE_INPUT_FORMATS = ( "%d-%m-%Y", )
+DATETIME_INPUT_FORMATS = ( "%d-%m-%Y %H:%M", )  #'03/04/2024'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/

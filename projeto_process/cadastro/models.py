@@ -11,15 +11,7 @@ from django.contrib.auth.models import User
 
 
 #essa classe foi usada como exemplo
-class Campo(models.Model):
-    nome = models.CharField(max_length=50)
-    descricao = models.CharField(max_length=150, verbose_name="Descrição")
-
-    #  Retorna a representação em STRING do objeto
-    def __str__(self):
-
-        return "{} ({})".format(self.nome, self.descricao)
-    
+#     
 class Fonte(models.Model):
     fonte = models.DecimalField(verbose_name="Fonte", max_digits=3, decimal_places=0)
     desc_fonte = models.CharField(max_length=150, verbose_name="Descrição da fonte" )
@@ -63,26 +55,26 @@ class Elemento(models.Model):
     def __str__(self):
         return "{} ({}) ".format(self.elemento, self.desc_elemento)  
 
+class UnidadeGestora(models.Model):
+    gestora = models.ForeignKey(BBM, on_delete=models.PROTECT, verbose_name="Nome da Gestora:", null=True)
+    numero_ug = models.IntegerField(verbose_name="Número da UG", null=True)
+    def __str__(self):
+            return "{} - Fonte({})".format(self.gestora.sigla_unidade, self.numero_ug)
+
 class Processos(models.Model):
     
     processo = models.CharField(max_length=150, verbose_name="Nº do Processo SEi")
-    bbm2 = models.ForeignKey(BBM, on_delete=models.PROTECT, verbose_name="BBM")
+    bbm2 = models.ForeignKey(BBM, on_delete=models.PROTECT, verbose_name="OBM")
     fonte2 = models.ForeignKey(Fonte, on_delete=models.PROTECT, verbose_name="Fonte")
     paoe2 = models.ForeignKey(Paoe, on_delete=models.PROTECT, verbose_name="PAOE")
     elemento2 = models.ForeignKey(Elemento, on_delete=models.PROTECT, verbose_name="Elemento", blank=True, null=True)
-    usuario = models.ForeignKey(User, on_delete=models.PROTECT,)
-    data_da_indicação = models.DateField(verbose_name="Data da indicação")
-    valor_solicitado_ind = models.CharField(max_length=2000, verbose_name="Valor Solicitado", default="R$0,00", )
-    valor_ind = models.CharField(max_length=2000, verbose_name="Valor da Indicação", default="R$0,00")
-    descricao = models.CharField(max_length=150, verbose_name="Descrição")
-    contrato = models.CharField(max_length=150, verbose_name="Contrato", blank=True, null=True)
+    ug = models.ForeignKey(UnidadeGestora, on_delete=models.PROTECT, verbose_name="Unidade Geradora",null=True,blank=True)
+    data_da_solicitacao = models.DateField(verbose_name="Data da Solicitação",null=True)  
+    valor_solicitado = models.CharField(max_length=2000, verbose_name="Valor Solicitado", default="R$0,00", blank=True, null=True,unique=True)
     
-
-    # relaciona a classe ao usuario, podendo visualizar apenas oque o usuario lançou
-    # usuario = models.ForeignKey(User, on_delete=models.PROTECT)
-
-    campo = models.ForeignKey(Campo, on_delete=models.PROTECT)
-
+    descricao = models.CharField(max_length=150, verbose_name="Descrição")
+    # contrato = models.CharField(max_length=150, verbose_name="Contrato", blank=True, null=True)
+    usuario = models.ForeignKey(User, on_delete=models.PROTECT,)
     # class Meta:
     #     constraints = [
     #         models.UniqueConstraint(fields=['processo', 'data_da_indicação','fonte2','paoe2','bbm2'], name='processo do ano')
@@ -90,5 +82,5 @@ class Processos(models.Model):
 
     #Retorna a representação em STRING do objeto
     def __str__(self):
-        return "{} - Fonte({}) {} - {} - {}".format(self.bbm2, self.fonte2.fonte, self.paoe2, self.campo.nome, self.campo.descricao)
- 
+        return "{} - Fonte({}) {} - {}".format(self.bbm2, self.fonte2.fonte, self.paoe2, self.descricao)
+

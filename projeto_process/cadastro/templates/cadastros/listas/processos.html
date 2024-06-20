@@ -5,10 +5,11 @@
 
 {% block conteudo %}
 
-<div class="container">
-    <hr>
-    <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
+<div class="container p-4">
+    <div><p></p></div>
+    <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between bor">
         <div class="mb-3 mb-md-0 d-flex text-nowrap ">
+            
         <a href="{% url 'cadastrar-processo' %}" class="btn btn-primary btn-md rounded-2" title="Cadastrar novo processo">Adicionar Processo</a>
         </div>
         <h3>Processos Cadastrados</h3>
@@ -18,16 +19,16 @@
     
 </div>
 <div class = 'container'>
-    <hr>
+    
 
-    <table border=1 class="table table-striped table-hover table-bordered table-sm">
+    <table border=1 class="table table-striped table-hover table-bordered table-sm table-responsive">
         <tr align="center">
             
             <th>BBM</th>
             <th>Processo</th>
             <th>Fonte</th>
             <th>Descrição</th>
-            <th>Valor Indicado</th>
+            <th>Valor Solicitado</th>
             <th>Opções</th>
         </tr>
 
@@ -39,7 +40,9 @@
             <td align="center">{{ Processos.processo }}</td>
             <td align="center">{{ Processos.fonte2 }}</td>
             <td align="center">{{ Processos.descricao }} </td>
-            <td align="center">{{ Processos.valor_ind }} </td>
+            <td align="center">{{ Processos.valor_solicitado }} </td>
+            
+            
 
 
             <!-- Botões -->

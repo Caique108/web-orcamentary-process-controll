@@ -26,84 +26,71 @@
     <body>
 <!-- navbar -->
         {% block navbar %}
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1 ">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1 mg-4">
             <div class="container">
-                
                 <a class="navbar-brand" href="{% url 'home' %}">
-                    <i class="bi bi-house-fill" aria-hidden="true"></i>
-                    Início
-                </a>
+                    <i class="bi bi-house-fill " aria-hidden="true"></i>
+                    Início</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavDropdown">
-
-                    <ul class="navbar-nav">
-                    <!-- condicionando para trazer a lista apenas se o usuario estiver logado -->
-
-                        {% if request.user.is_authenticated %}
-                        <ul class="navbar-nav">
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'cadastro' %}">Cadastros</a>
-                            </li>
-                        </ul>
-                        <ul class="navbar-nav">
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'painel' %}">Painel</a>
-                            </li>
-                        </ul>
-                    </li>
+                    <span class="navbar-toggler-icon"></span></button>
                 
-                    <!-- não consigo colocar essa bosta pra direita de forma alguma só tirando de dentro da box da navbar-->
-                  
-                        <ul class="navbar-nav ">    
-                            <li class="nav-item dropdown mx-auto">
-                                <a class="nav-link dropdown-toggle text-white text-center border rounded border-secondary mx-auto " href="{% url 'login' %}" 
-                                    id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false"
-                                    aria-haspopup="true">
-                                    <i class="bi bi-person-circle" aria-hidden="true"></i>
-                                    <span id="username">{{ user.username }}</span>
-                                </a>
-                                <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item" href="#">
-                                        <i class="bi bi-person-bounding-box" aria-hidden="true"></i>
-                                        Meus dados</a>
-                                    
-                                    <a class="dropdown-item" href="#">
-                                        <i class="bi bi-lock-fill" aria-hidden="true"></i>
-                                        Alterar Senha</a>
-                                        <div class="dropdown-divider"></div>
-                                    <form method="post" action="{% url 'logout' %}">
-                                        {% csrf_token %}
-                                        <button class="dropdown-item" type="submit" aria-hidden="true">
-                                            <i class="bi bi-box-arrow-right" aria-hidden="true"></i>
-                                        Sair</button>
-                                    </form>
-                                
-
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav">
+                            <!-- condicionando para trazer a lista apenas se o usuario estiver logado --> 
+                            {% if request.user.is_authenticated %}
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link p-2 " href="{% url 'cadastro' %}">Cadastros</a>
+                                </li>
+                            </ul>
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link p-2" href="{% url 'painel' %}">Painel</a>
+                                </li>
+                            </ul>
+                        </ul>
+                    
+                        <!-- não consigo colocar essa bosta pra direita de forma alguma só tirando de dentro da box da navbar-->
+                        <div class="container-fluid">
+                            <ul class="navbar-nav  justify-content-end">    
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle text-white text-center border rounded border-secondary" href="{% url 'login' %}" 
+                                        id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                                        aria-haspopup="true">
+                                        <i class="bi bi-person-circle" aria-hidden="true"></i>
+                                        <span id="username">{{ user.username|title }}</span>
+                                    </a>
+                                    <div class="dropdown-menu " aria-labelledby="dropdownMenuOffset">
+                                        <a class="dropdown-item" href="#">
+                                            <i class="bi bi-person-bounding-box" aria-hidden="true"></i>
+                                            Meus dados</a>
+                                        <a class="dropdown-item" href="#">
+                                            <i class="bi bi-lock-fill" aria-hidden="true"></i>
+                                            Alterar Senha</a>
+                                            <div class="dropdown-divider"></div>
+                                        <form method="post" action="{% url 'logout' %}">
+                                            {% csrf_token %}
+                                            <button class="dropdown-item" type="submit" aria-hidden="true">
+                                                <i class="bi bi-box-arrow-right" aria-hidden="true"></i>
+                                            Sair</button>
+                                        </form>
+                                    </div>
+                                </li>
+                                <!-- navbar para visitantes -->
+                                {% else %}
+                                <div>
+                                    <li class="nav-link p-0">
+                                        <a class="nav-link text-white" href="{% url 'login' %}">
+                                            <i class="bi bi-box-arrow-in-right" aria-hidden="true" aria-expanded="false"></i>
+                                            Entrar
+                                        </a>
+                                    </li>
                                 </div>
-                            </li>
-
-                        
-                        
-                        <!-- navbar para visitantes -->
-                        {% else %}
-                        <div>
-                        <li class="nav-link p-0">
-                            <a class="nav-link text-white" href="{% url 'login' %}">
-                                <i class="bi bi-box-arrow-in-right" aria-hidden="true" aria-expanded="false"></i>
-                                Entrar
-                            </a>
-                        </li>
-                        
+                            </ul>
+                        </div>
                         {% endif %}
-
-                    </ul>
-                </div>
-                </div>
-                
+                    </div>
+                           
             </div>
         </nav>
         {% endblock %}
@@ -128,21 +115,21 @@
 
 
 {% block footer %}
-    <div class="footer  mt-auto ">
-        <footer class="py-3 my-4 p-2 ">
-            
-                <ul class="nav nav-pills justify-content-center border-bottom pb-3 mb-2 ">
-                    <p class="text-center text-muted"></p>
-                </ul>
+ 
+<div class="footer mt-auto ">
+    <footer class="py-3 my-4 p-2 ">
+        
+            <ul class="nav nav-pills justify-content-center border-bottom pb-3 mb-2 ">
+                <p class="text-center text-muted"></p>
+            </ul>
 
-                <p class="text-center text-muted" id="ano_f"></p>
-                <script>const d = new Date();
-                    document.getElementById("ano_f").innerHTML = "<br> Corpo de Bombeiros Militares da Bahia <br> .::Departamento de Planejamento::.<br>© 2016-"+d.getFullYear()</script>
-            
-        </footer>
+            <p class="text-center text-muted" id="ano_f"></p>
+            <script>const d = new Date();
+                document.getElementById("ano_f").innerHTML = "<br> Corpo de Bombeiros Militares da Bahia <br> .::Departamento de Planejamento::.<br>© 2016-"+d.getFullYear()</script>
+        
+    </footer>
+</div>
 
-
-    </div>
 {% endblock %}
 
 

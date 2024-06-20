@@ -12,12 +12,9 @@ from django.urls import reverse_lazy
 
 
 
-
-
-
-#____#importando modelos da pasta cadastros_______#
+#______importando modelos da pasta cadastros_______#
     
-from .models import Campo,Processos,Fonte,Paoe,BBM,Elemento
+from .models import Processos,Fonte,Paoe,BBM,Elemento
 
 
 
@@ -29,38 +26,26 @@ from .models import Campo,Processos,Fonte,Paoe,BBM,Elemento
 
 #Campo de Criação (Preenchimento/entry), dos dados.
 
-class CampoCreate(LoginRequiredMixin, CreateView):
-    login_url = reverse_lazy('login')
-    #model q queremos criar a view
-    model = Campo
-    #campos do modelo que queremos usar
-    fields = ['nome', 'descricao']
-    #caminho do template que vai ser usado
-    template_name = 'cadastros/form.html'
-    #caminho que vai ser a URL quando for sucesso!
-    success_url = reverse_lazy('index')
 
 class ProcessosICreate(GroupRequiredMixin, LoginRequiredMixin, CreateView):
     login_url = reverse_lazy('login')
     group_required = [u'DEPLAN',]
     model = Processos
-    fields = ['processo',
-            'valor_solicitado_ind',
-            'descricao',
+    fields = [
             'bbm2',
+            'processo',
+            'ug',
             'fonte2',
             'paoe2',
             'elemento2',
-            'data_da_indicação',
-            'valor_ind',
-            'contrato',
-            'campo']
+            'data_da_solicitacao',
+            'valor_solicitado',
+            'descricao'
+            ]
     def get_form(self, form_class=None):
         form = super(ProcessosICreate, self).get_form(form_class)
-        form.fields['data_da_indicação'].widget = AdminDateWidget(attrs={'type': 'date', 'max': datetime.now().date()})
+        form.fields['data_da_solicitacao'].widget = AdminDateWidget(attrs={'type': 'date', 'max': datetime.now().date()})
         return form
-
-
 
     template_name = 'cadastros/form_processo.html'
     success_url = reverse_lazy('listar-processo')
@@ -73,7 +58,6 @@ class ProcessosICreate(GroupRequiredMixin, LoginRequiredMixin, CreateView):
 
         return url
     
-
 class FonteICreate(LoginRequiredMixin, CreateView):
     login_url = reverse_lazy('login')
     model = Fonte
@@ -112,7 +96,6 @@ class BBMICreate(LoginRequiredMixin,CreateView):
 
     success_url = reverse_lazy('listar-bbm')
 
-
 class ElementoICreate(LoginRequiredMixin,CreateView):
     login_url = reverse_lazy('login')
     model = Elemento
@@ -136,17 +119,16 @@ class ProcessosIUpdate(LoginRequiredMixin, UpdateView):
     model = Processos
 
     fields = [
-            'processo',
-            'valor_solicitado_ind',
-            'descricao',
             'bbm2',
+            'processo',
+            'ug',
             'fonte2',
             'paoe2',
             'elemento2',
-            'data_da_indicação',
-            'valor_ind',
-            'contrato',
-            'campo'
+            'data_da_solicitacao',
+            'valor_solicitado',
+            'descricao',
+            
             ]
     
     template_name = 'cadastros/form_processo.html'
@@ -154,7 +136,7 @@ class ProcessosIUpdate(LoginRequiredMixin, UpdateView):
     success_url = reverse_lazy('listar-processo')
     def get_form(self, form_class=None):
         form = super(ProcessosIUpdate, self).get_form(form_class)
-        form.fields['data_da_indicação'].widget = AdminDateWidget(attrs={'type': 'date', 'max': datetime.now().date()})
+        form.fields['data_da_solicitacao'].widget = AdminDateWidget(attrs={'type': 'date', 'max': datetime.now().date()})
         return form
 
 class FonteIUpdate(LoginRequiredMixin, UpdateView):
@@ -264,7 +246,7 @@ class ElementoIDelete(LoginRequiredMixin, DeleteView):
 #Campo da listagem das informações já preenchidas no BD
 
 class ProcessosList (LoginRequiredMixin, ListView):
-
+    
     login_url = reverse_lazy('login')
     model = Processos
 

@@ -8,13 +8,12 @@
 {% block conteudo %}
 
 
-<div class='container'>   
+<div class='container border rounded jumbotron mx-auto px-4 m-3 bg-light text-dark'>   
     <h3 class="my-4">Cadastrar Registros</h3>
     <hr>
-
-    <div class="col-5">
+    <div class="container p-3">
         
-        <form action="" method="POST" class="form-inline ">
+        <form action="" method="POST" class="form-inline mx-auto">
             <!-- chamada do django para verificação segura -->
                 
             {% csrf_token %}

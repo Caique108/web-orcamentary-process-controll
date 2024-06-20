@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import CampoCreate, ProcessosICreate, FonteICreate,PaoeICreate,BBMICreate,ElementoICreate
+from .views import ProcessosICreate, FonteICreate,PaoeICreate,BBMICreate,ElementoICreate
 from .views import ProcessosIUpdate, FonteIUpdate, PaoeIUpdate,BBMIUpdate,ElementoIUpdate
 from .views import ProcessosIDelete, FonteIDelete, PaoeIDelete,BBMIDelete,ElementoIDelete
 from .views import ProcessosList, FonteList, PaoeList,BBMList,ElementoList
@@ -13,7 +13,6 @@ urlpatterns = [
     #definindo como chamar cada página na URL
 
     # ---- CRIAÇÃO ---- #
-    path('cadastrar/campo/', CampoCreate.as_view(), name='cadastrar-campo'),
     path('cadastrar/processo/', ProcessosICreate.as_view(), name='cadastrar-processo'),
     path('cadastrar/fonte/', FonteICreate.as_view(), name='cadastrar-fonte'),
     path('cadastrar/paoe/', PaoeICreate.as_view(), name='cadastrar-paoe'),

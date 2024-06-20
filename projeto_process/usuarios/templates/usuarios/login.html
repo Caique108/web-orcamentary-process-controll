@@ -14,7 +14,9 @@
 <nav class="navbar sticky-top navbar-dark bg-dark text-white justify-content-center   ">
     <a class="navbar-brand border rounded border-secondary p-2 mb-1 mx-auto" href="{% url 'home' %}">
         <i class="bi bi-activity"></i> DEPARTAMENTO DE PLANEJAMENTO <i class="bi bi-activity"></i></a>
-  </nav>
+   
+
+</nav>
 {% endblock %}
 
 
@@ -22,9 +24,10 @@
 
 <div class="d-flex justify-content-sm-center mb-3 p-4 l-2">
     {% if request.user.is_authenticated %}
-    <div class="col-md-8 mx-auto">
-        
-        <h3>Ação não permitida!</h3>
+    <div class="container border rounded jumbotron  m-3 bg-light text-dark">
+        <div class="cotainer-fluid border rounded p-2 m-4 bg-danger text-center">
+            <h3 class="text-white text-center"><i class="bi bi-exclamation-octagon text-white bg-danger"></i> Ação não permitida!</h3>
+        </div>
         <hr>
         <p class="lead"><strong>Houve algum problema ao processar a ação desejada ou você não tem permissão para isso.</strong></p>
             
@@ -49,14 +52,9 @@
             {% csrf_token %}
 
             {{ form|crispy }}
-
-            
             
             <br><a href="{% url 'home' %}" class="btn btn-danger">Cancelar</a>
             <button type="submit" class="btn btn-primary align-top ">Entrar</button>
-           
-
-
 
         </form>
     </div>
