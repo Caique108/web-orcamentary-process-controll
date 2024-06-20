@@ -25,7 +25,7 @@
 - Exclusão/Edição de Cadastro
 - Máscaras de R$ e data
 - Usuário
-- Registro de novo usuário
+- 🚧Registro de novo usuário🚧
 - 
 
 
