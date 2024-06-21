@@ -68,7 +68,7 @@ class FonteICreate(LoginRequiredMixin, CreateView):
     ]
     template_name = 'cadastros/form.html'
 
-    success_url = reverse_lazy('listar-fontes')
+    success_url = reverse_lazy('listar-fonte') 
 
 class PaoeICreate(LoginRequiredMixin, CreateView):
     login_url = reverse_lazy('login')
@@ -125,19 +125,14 @@ class ProcessosIUpdate(LoginRequiredMixin, UpdateView):
             'fonte2',
             'paoe2',
             'elemento2',
-            'data_da_solicitacao',
             'valor_solicitado',
             'descricao',
-            
             ]
     
     template_name = 'cadastros/form_processo.html'
 
     success_url = reverse_lazy('listar-processo')
-    def get_form(self, form_class=None):
-        form = super(ProcessosIUpdate, self).get_form(form_class)
-        form.fields['data_da_solicitacao'].widget = AdminDateWidget(attrs={'type': 'date', 'max': datetime.now().date()})
-        return form
+    
 
 class FonteIUpdate(LoginRequiredMixin, UpdateView):
 
@@ -151,7 +146,7 @@ class FonteIUpdate(LoginRequiredMixin, UpdateView):
     
     template_name = 'cadastros/form.html'
 
-    success_url = reverse_lazy('listar-fontes')
+    success_url = reverse_lazy('listar-fonte')
 
 class PaoeIUpdate(LoginRequiredMixin, UpdateView):
     login_url = reverse_lazy('login')
@@ -211,7 +206,7 @@ class FonteIDelete(LoginRequiredMixin, DeleteView):
 
     template_name = 'cadastros/form-excluir.html'
 
-    success_url = reverse_lazy('listar-fontes')
+    success_url = reverse_lazy('listar-fonte')
 
 class PaoeIDelete(LoginRequiredMixin, DeleteView):
 

@@ -27,6 +27,7 @@
             <th>BBM</th>
             <th>Processo</th>
             <th>Fonte</th>
+            <th>PAOE</th>
             <th>Descrição</th>
             <th>Valor Solicitado</th>
             <th>Opções</th>
@@ -36,9 +37,10 @@
         <tr>
             <!-- CABEÇALHO DAS COLUNAS -->
            
-            <td align="center">{{ Processos.bbm2 }}</td>
+            <td align="center">{{ Processos.bbm2.sigla_unidade }}</td>
             <td align="center">{{ Processos.processo }}</td>
-            <td align="center">{{ Processos.fonte2 }}</td>
+            <td align="center">{{ Processos.fonte2.fonte }}</td>
+            <td align="center">{{ Processos.paoe2.paoe }} </td>
             <td align="center">{{ Processos.descricao }} </td>
             <td align="center">{{ Processos.valor_solicitado }} </td>
             

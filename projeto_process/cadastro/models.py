@@ -59,7 +59,7 @@ class UnidadeGestora(models.Model):
     gestora = models.ForeignKey(BBM, on_delete=models.PROTECT, verbose_name="Nome da Gestora:", null=True)
     numero_ug = models.IntegerField(verbose_name="Número da UG", null=True)
     def __str__(self):
-            return "{} - Fonte({})".format(self.gestora.sigla_unidade, self.numero_ug)
+            return "{} - UG({})".format(self.gestora.sigla_unidade, self.numero_ug)
 
 class Processos(models.Model):
     
@@ -69,7 +69,7 @@ class Processos(models.Model):
     paoe2 = models.ForeignKey(Paoe, on_delete=models.PROTECT, verbose_name="PAOE")
     elemento2 = models.ForeignKey(Elemento, on_delete=models.PROTECT, verbose_name="Elemento", blank=True, null=True)
     ug = models.ForeignKey(UnidadeGestora, on_delete=models.PROTECT, verbose_name="Unidade Geradora",null=True,blank=True)
-    data_da_solicitacao = models.DateField(verbose_name="Data da Solicitação",null=True)  
+    data_da_solicitacao = models.DateField(verbose_name="Data da Solicitação")  
     valor_solicitado = models.CharField(max_length=2000, verbose_name="Valor Solicitado", default="R$0,00", blank=True, null=True,unique=True)
     
     descricao = models.CharField(max_length=150, verbose_name="Descrição")
